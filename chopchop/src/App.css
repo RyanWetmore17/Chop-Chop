@@ -14,7 +14,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -37,7 +36,7 @@
   }
 }
 #treeImage {
-  width: 30vw;
+  width: 15vw;
 }
 button {
   background-color: #00000000;
@@ -58,6 +57,8 @@ button {
 }
 .container {
   position: relative;
+}
+.logsCountText {
   text-align: center;
   color: white;
   font-size: 1.5vw;

@@ -1,6 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
+import image from "./img/sky.jpg";
+
+const bgImage = require('./img/sky.jpg')
+const bgImageString = `url(${bgImage})`
+console.log(bgImageString)
 
 function App() {
   
@@ -23,8 +28,12 @@ function App() {
     // ...
   }
   return (
-    <div className="App">
-      
+    <div className="App" style={{ backgroundImage:`url(${image})`,backgroundRepeat:"no-repeat",backgroundSize:"cover", 
+    height:'100vh',width:'100vw'
+    }}>
+      <div >
+
+      </div>
     {/* <div>
       <div>{count}</div>
       <button onClick={() => setTicking(false)}>pause</button>
@@ -35,12 +44,12 @@ function App() {
         <button onClick={handleClick}>
           <div className='container'>
           <img src={require('./img/tree.png')} id='treeImage'/>
-          <p className='centered'>{logs + count}</p>
 
         <img src={require('./img/chopmanslow.gif')}  className='funny'/>
           
           </div>
         </button>
+        <p className='logsCountText'>{logs + count} total logs</p> 
       </header>
     </div>
   );
