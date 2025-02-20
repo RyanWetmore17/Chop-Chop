@@ -1,0 +1,10 @@
+.upgradeMenu {
+  position: absolute;
+  top: 50%;
+  /* left: 50%; */
+  transform: translate(-0%, -50%);
+  background-color: #808080aa;
+  height: 100vh;
+  width: 25vw;
+  z-index: 2;
+}

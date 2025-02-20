@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
 .App-logo {
@@ -14,7 +16,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -43,7 +45,7 @@ button {
   background-color: #00000000;
   border: #00000000;
 }
-.funny {
+.chopmanGif {
   width: 10vw;
   position: absolute;
   top: 84%;
@@ -61,4 +63,16 @@ button {
   text-align: center;
   color: white;
   font-size: 1.5vw;
+}
+.grassImage {
+  width: calc(100%);
+  height: calc(16% + 40vh - 20vw);
+  position: absolute;
+  top: calc(42% + 20vw + 2vh);
+  z-index: 0;
+  left: 50%;
+  transform: translate(-50%, 0px);
+}
+.above {
+  z-index: 1;
 }

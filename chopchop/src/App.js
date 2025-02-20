@@ -1,12 +1,16 @@
 import logo from './logo.svg';
-import './App.css';
+import './css/App.css';
 import { useEffect, useState } from 'react';
-import MainComponent from './components/MainComponent'
+import MainComponent from './components/MainComponent';
+import UpgradeMenu from './components/UpgradeMenu';
+import InformationMenu from './components/InformationMenu';
 
 function App() {
   return (
     <div className="App">
       <MainComponent />
+      <UpgradeMenu />
+      <InformationMenu />
     </div>
   );
 }

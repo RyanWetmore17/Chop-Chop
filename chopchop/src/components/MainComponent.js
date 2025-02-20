@@ -1,6 +1,7 @@
 import logo from '../logo.svg';
-import '../App.css';
+import '../css/App.css';
 import { useEffect, useState } from 'react';
+import image from "../img/sky.jpg";
 
 function MainComponent() {
   
@@ -23,7 +24,7 @@ function MainComponent() {
     // ...
   }
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundImage:`url(${image})`, backgroundRepeat:"no-repeat", backgroundSize:"cover", height:'100vh', width:'100vw'}}>
       
     {/* <div>
       <div>{totalLogs}</div>
@@ -33,14 +34,13 @@ function MainComponent() {
       <header className="App-header">
 
         <button onClick={handleClick}>
-          <div className='container'>
-          <img src={require('../img/tree.png')} id='treeImage'/>
-          <p className='centered'>{logs + totalLogs}</p>
-
-        <img src={require('../img/chopmanslow.gif')}  className='funny'/>
-          
+          <div className='above container'>
+            <img src={require('../img/tree.png')} id='treeImage'/>
+            <img src={require('../img/chopmanslow.gif')}  className='chopmanGif'/>
           </div>
         </button>
+          <p className='above'>{logs + totalLogs}</p>
+          <img className='grassImage' src={require('../img/grass.png')} />
       </header>
     </div>
   );
