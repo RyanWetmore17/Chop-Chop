@@ -1,26 +1,25 @@
-import logo from '../logo.svg';
 import '../css/App.css';
 import { useEffect, useState } from 'react';
 import image from "../img/sky.jpg";
 
-function MainComponent() {
-  
-  const [ticking, setTicking] = useState(true),
-        [totalLogs, setTotalLogs] = useState(0)
-   
-   useEffect(() => {
+function divideIfNotZero(numerator, denominator) {
+  if (denominator === 0 || isNaN(denominator)) {
+    return 0;
+  } else {
+    return numerator / denominator;
+  }
+}
+function MainComponent(props) {
+  useEffect(() => {
     const timer = setTimeout(() => {
-      ticking && setTotalLogs(totalLogs+1)
-      // if (totalLogs > 150000) {
-      //   settotalLogs(0)
-      //   setTicking(false)
-      // }
-    }, 1000)
+      props.ticking && props.setTotalLogs(a => a + 1)
+      // When more upgrades, add like workers
+    }, (divideIfNotZero(1000, props.logsPerSecond)))
     return () => clearTimeout(timer)
-   }, [totalLogs, ticking])
-  const [logs, setLogs] = useState(0);
+   }, [props.workers, props.totalLogs, props.ticking])
+   
   function handleClick() {
-    setLogs(a => a + 1);
+    props.setTotalLogs(a => a + 1);
     // ...
   }
   return (
@@ -39,7 +38,8 @@ function MainComponent() {
             <img src={require('../img/chopmanslow.gif')}  className='chopmanGif'/>
           </div>
         </button>
-          <p className='above'>{logs + totalLogs}</p>
+          <p className='above'>Total Logs: {props.totalLogs}</p>
+          <p  className='above logsPerSecondText'>logs per second: {Math.floor(props.logsPerSecond * 1000) / 1000}</p>
           <img className='grassImage' src={require('../img/grass.png')} />
       </header>
     </div>

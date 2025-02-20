@@ -1,7 +1,9 @@
-.App {
-  text-align: center;
+body {
   font-size: calc(10px + 2vmin);
   color: white;
+}
+.App {
+  text-align: center;
 }
 
 .App-logo {
@@ -22,8 +24,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
@@ -75,4 +75,9 @@ button {
 }
 .above {
   z-index: 1;
+}
+.logsPerSecondText {
+  font-size: calc(1.5vmin);
+  margin: -10px;
+  
 }

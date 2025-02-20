@@ -8,3 +8,13 @@
   width: 25vw;
   z-index: 2;
 }
+.workersButton:enabled {
+  font-size: calc(0px + 2vmin);
+  color: white;
+}
+.workersButton {
+  font-size: calc(0px + 2vmin);
+  padding: 10px;
+  width:90%;
+  height: 10%;
+}
