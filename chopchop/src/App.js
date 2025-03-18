@@ -10,9 +10,6 @@ function App() {
   const [logsPerSecond, setLogsPerSecond] = useState(0);
   window.totalLogs = totalLogs
   window.setTotalLogs = setTotalLogs
-  useEffect(() => {
-    setTotalLogs(Number(localStorage.getItem('totalLogs')))
-  },[])
   return (
     <div className="App">
       <MainComponent setTotalLogs={setTotalLogs} totalLogs={totalLogs} ticking={ticking} logsPerSecond={logsPerSecond} />

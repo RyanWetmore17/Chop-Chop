@@ -15,33 +15,70 @@ function UpgradeMenu(props) {
     setWorkerCost(a => Math.ceil(a * 1.18))
   }
   const [saveTimerCount, setSaveTimerCount] = useState(0)
-  const [saveTimerTicking, setSaveTimerTicking] = useState(true)
+  const [saveTimerTicking, setSaveTimerTicking] = useState(false)
   function saveGame() {
-    console.log("Game Saved")
     localStorage.setItem('totalLogs', props.totalLogs)
+    localStorage.setItem('logsPerSecond', props.logsPerSecond)
     localStorage.setItem('workers', workers)
+    localStorage.setItem('workerCost', workerCost)
+
+    // Get Time
+    let time = new Date()
+    let currentHours = time.getHours()
+    if (currentHours < 10) {
+      currentHours = "0" + currentHours
+    }
+    let currentMinutes = time.getMinutes()
+    if (currentMinutes < 10) {
+      currentMinutes = "0" + currentMinutes
+    }
+    let currentSeconds = time.getSeconds()
+    if (currentSeconds < 10) {
+      currentSeconds = "0" + currentSeconds
+    }
+
+    return "Game Saved at: " + currentHours + ":" + currentMinutes + ":" + currentSeconds
   }
   function resetGame() {
-    console.log("Game Reset")
 
-    // Set all stored values to 0
+    // Reset all stored values to defaults
     localStorage.setItem('totalLogs', 0)
-    localStorage.setItem('workers',  0)
+    localStorage.setItem('logsPerSecond', 0)
+    localStorage.setItem('workers', 0)
+    localStorage.setItem('workerCost', 10)
 
     // Set all actual values to 0
+    props.setTicking(false)
     props.setTotalLogs(0)
+    props.setLogsPerSecond(0)
     setWorkers(0)
+    setWorkerCost(10)
+
+    return "Game Reset"
   }
   useEffect(() => {
     const timer = setTimeout(() => {
       saveTimerTicking && setSaveTimerCount(saveTimerCount + 1)
-      saveGame();
-    }, (60000))
+      console.log(saveGame())
+    }, (5000))
     return () => clearTimeout(timer)
   },[saveTimerTicking, saveTimerCount])
+
+  // On window start
   useEffect(() => {
+    props.setTotalLogs(Number(localStorage.getItem('totalLogs')))
+    props.setLogsPerSecond(Number(localStorage.getItem('logsPerSecond')))
     setWorkers(Number(localStorage.getItem('workers')))
+    setWorkerCost(Number(localStorage.getItem('workerCost')))
+    if (localStorage.getItem('logsPerSecond') > 0) {
+      props.setTicking(true)
+    }
+    setSaveTimerTicking(true)
   },[])
+  useEffect(() => {
+    setSaveTimerTicking(false)
+    setSaveTimerTicking(true)
+  },[props.totalLogs, props.logsPerSecond])
   window.saveGame = saveGame
   window.resetGame = resetGame
   return (
